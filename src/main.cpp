@@ -179,6 +179,7 @@ void setup() {
   });
 
   server.onNotFound(notFound);
+  DefaultHeaders::Instance().addHeader("Access-Control-Allow-Origin", "*");
   server.begin();
 }
 
