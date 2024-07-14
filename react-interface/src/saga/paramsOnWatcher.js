@@ -4,10 +4,10 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { startRequest, stopRequest, updateParams } from '../actions/actionCreators'
 
 /** Returns an axios call */
-function getParamsRequest(data) {
+function setParamsRequest(data) {
     return axios.request({
         method: 'post',
-        url: process.env.REACT_APP_GET_DATA_URL,
+        url: process.env.REACT_APP_POST_DATA_URL,
         data: `command=${data.mode},${data.temperature},${data.fanSpeed},${data.directionAuto},${data.direction},${data.light},${data.turbo},${data.xFan},${data.sleep},1`
     });
 }
@@ -16,7 +16,7 @@ function getParamsRequest(data) {
 function* loginEffectSaga(payload) {
     try {
         yield put(startRequest());
-        let { data } = yield call(getParamsRequest, payload.param);
+        let { data } = yield call(setParamsRequest, payload.param);
         yield put(stopRequest());
         put(updateParams({ 'status': data, 'state': 'on', 'message': 'AC turned on.' }));
     } catch (e) {
