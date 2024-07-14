@@ -8,19 +8,15 @@ import Dropdown from 'react-dropdown';
 import Container from 'react-bootstrap/Container';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import RangeSlider from 'react-bootstrap-range-slider';
 
 import { Bars } from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { AC_DIRECTION, AC_FAN_SPEED, AC_MODE, AC_TEMP } from "../constants";
+import { AC_DIRECTION, AC_FAN_SPEED, AC_MODE } from "../constants";
 import { getDefaults, setParamsOn, setParamsOff } from "../actions/actionCreators";
 import { bindActionCreators } from '@reduxjs/toolkit';
-import {
-    Slider,
-    SliderTrack,
-    SliderFilledTrack,
-    SliderThumb,
-} from "@chakra-ui/slider"
+
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -101,16 +97,16 @@ class Dashboard extends React.Component {
                         <Row>
                             <Col>
                                 <Alert variant='warning'>
-                                    <Alert variant='success'>
-                                        <Dropdown
-                                            name={'temperature'}
-                                            options={AC_TEMP}
-                                            onChange={data => this.setState({ temperature: data.value })}
-                                            value={AC_TEMP.find(el => el.value === this.state.temperature)}
-                                            placeholder="Select temperature"
-                                        />
-                                    </Alert>
-
+                                    <RangeSlider
+                                        min={16}
+                                        max={32}
+                                        size='lg'
+                                        tooltip='on'
+                                        onChange={e => this.setState({ temperature: e.target.value })}
+                                        tooltipLabel={(t) => `${t}°`}
+                                        tooltipPlacement='top'
+                                        value={this.state.temperature}
+                                    />
                                     <Row>
                                         <Col>
                                             <label>Mode</label>
