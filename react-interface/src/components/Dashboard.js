@@ -136,11 +136,11 @@ function Dashboard() {
                                     <Col sm>
                                         <label>Options</label>
                                         <Alert variant='secondary'>
-                                            <ToggleButton 
+                                            <ToggleButton
                                                 id='toggle-light'
                                                 type='checkbox'
-                                                size='sm' 
-                                                value={1} 
+                                                size='sm'
+                                                value={1}
                                                 variant='outline-secondary'
                                                 checked={!!light}
                                                 onChange={e => setLight(Number(e.currentTarget.checked))}
@@ -148,33 +148,33 @@ function Dashboard() {
                                                 Light
                                             </ToggleButton>
 
-                                            <ToggleButton 
-                                                    id='toggle-turbo'
+                                            <ToggleButton
+                                                id='toggle-turbo'
                                                 type='checkbox'
-                                                size='sm' 
-                                                value={1} 
+                                                size='sm'
+                                                value={1}
                                                 variant='outline-secondary'
                                                 checked={!!turbo}
                                                 onChange={e => setTurbo(Number(e.currentTarget.checked))}
                                                 className='mr-1'>
                                                 Turbo
                                             </ToggleButton>
-                                            <ToggleButton 
+                                            <ToggleButton
                                                 id='toggle-xfan'
                                                 type='checkbox'
-                                                size='sm' 
-                                                value={1} 
+                                                size='sm'
+                                                value={1}
                                                 variant='outline-secondary'
                                                 checked={!!xFan}
                                                 onChange={e => setXFan(Number(e.currentTarget.checked))}
                                                 className='mr-1'>
                                                 XFan
                                             </ToggleButton>
-                                            <ToggleButton 
+                                            <ToggleButton
                                                 id='toggle-sleep'
                                                 type='checkbox'
-                                                size='sm' 
-                                                value={1} 
+                                                size='sm'
+                                                value={1}
                                                 variant='outline-secondary'
                                                 checked={!!sleep}
                                                 onChange={e => setSleep(Number(e.currentTarget.checked))}>
@@ -185,12 +185,14 @@ function Dashboard() {
                                 </Row>
                                 <Row>
                                     <Col sm>
-                                        <Button variant="success" className={'mb-2 block'}
-                                            onClick={handleTurnOn}>Send command</Button>
+                                        <div className='d-grid gap-2'>
+                                            <Button variant="success" className={'mb-2'} onClick={handleTurnOn}>Send command</Button>
+                                        </div>
                                     </Col>
                                     <Col sm>
-                                        <Button variant="danger" className={'mb-2'}
-                                            onClick={handleTurnOff}>Turn off</Button>
+                                        <div className='d-grid gap-2'>
+                                            <Button variant="danger" className={'mb-2'} onClick={handleTurnOff}>Turn off</Button>
+                                        </div>
                                     </Col>
                                 </Row>
                             </Alert>
