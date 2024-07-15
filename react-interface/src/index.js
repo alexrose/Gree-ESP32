@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client';
 
 import './style/global.css';
 import 'react-dropdown/style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 

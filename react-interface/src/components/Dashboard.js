@@ -6,9 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-dropdown';
 import Container from 'react-bootstrap/Container';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import RangeSlider from 'react-bootstrap-range-slider';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 import { Bars } from 'react-loader-spinner';
 import { ToastContainer } from 'react-toastify';
@@ -92,6 +91,7 @@ function Dashboard() {
                                     tooltipPlacement='top'
                                     value={temperature}
                                 />
+
                                 <Row>
                                     <Col>
                                         <label>Mode</label>
@@ -136,58 +136,60 @@ function Dashboard() {
                                     <Col sm>
                                         <label>Options</label>
                                         <Alert variant='secondary'>
-                                            <ToggleButtonGroup type="checkbox" defaultValue={1}
-                                                className={'mr-1 mb-1'}>
-                                                <ToggleButton
-                                                    variant={"outline-secondary"}
-                                                    size="sm"
-                                                    value={light}
-                                                    onClick={e => setLight(Number(e?.target?.checked))}>
-                                                    Light
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
-                                            <ToggleButtonGroup type="checkbox" defaultValue={1}
-                                                className={'mr-1 mb-1'}>
-                                                <ToggleButton
-                                                    type={"checkbox"}
-                                                    variant={"outline-secondary"}
-                                                    size="sm"
-                                                    value={turbo}
-                                                    onClick={e => setTurbo(Number(e.target.checked))}>
-                                                    Turbo
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
-                                            <ToggleButtonGroup type="checkbox" defaultValue={1}
-                                                className={'mr-1 mb-1'}>
-                                                <ToggleButton
-                                                    type={"checkbox"}
-                                                    variant={"outline-secondary"}
-                                                    size="sm"
-                                                    value={xFan}
-                                                    onClick={e => setXFan(Number(e.target.checked))}>
-                                                    X-Fan
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
-                                            <ToggleButtonGroup type="checkbox" defaultValue={1} className={'mb-1'}>
-                                                <ToggleButton
-                                                    type={"checkbox"}
-                                                    variant={"outline-secondary"}
-                                                    size="sm"
-                                                    value={sleep}
-                                                    onClick={e => setSleep(Number(e.target.checked))}>
-                                                    Sleep
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
+                                            <ToggleButton 
+                                                id='toggle-light'
+                                                type='checkbox'
+                                                size='sm' 
+                                                value={1} 
+                                                variant='outline-secondary'
+                                                checked={!!light}
+                                                onChange={e => setLight(Number(e.currentTarget.checked))}
+                                                className='mr-1'>
+                                                Light
+                                            </ToggleButton>
+
+                                            <ToggleButton 
+                                                    id='toggle-turbo'
+                                                type='checkbox'
+                                                size='sm' 
+                                                value={1} 
+                                                variant='outline-secondary'
+                                                checked={!!turbo}
+                                                onChange={e => setTurbo(Number(e.currentTarget.checked))}
+                                                className='mr-1'>
+                                                Turbo
+                                            </ToggleButton>
+                                            <ToggleButton 
+                                                id='toggle-xfan'
+                                                type='checkbox'
+                                                size='sm' 
+                                                value={1} 
+                                                variant='outline-secondary'
+                                                checked={!!xFan}
+                                                onChange={e => setXFan(Number(e.currentTarget.checked))}
+                                                className='mr-1'>
+                                                XFan
+                                            </ToggleButton>
+                                            <ToggleButton 
+                                                id='toggle-sleep'
+                                                type='checkbox'
+                                                size='sm' 
+                                                value={1} 
+                                                variant='outline-secondary'
+                                                checked={!!sleep}
+                                                onChange={e => setSleep(Number(e.currentTarget.checked))}>
+                                                Sleep
+                                            </ToggleButton>
                                         </Alert>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col sm>
-                                        <Button variant="success" className={'mb-2'} block
+                                        <Button variant="success" className={'mb-2 block'}
                                             onClick={handleTurnOn}>Send command</Button>
                                     </Col>
                                     <Col sm>
-                                        <Button variant="danger" className={'mb-2'} block
+                                        <Button variant="danger" className={'mb-2'}
                                             onClick={handleTurnOff}>Turn off</Button>
                                     </Col>
                                 </Row>
